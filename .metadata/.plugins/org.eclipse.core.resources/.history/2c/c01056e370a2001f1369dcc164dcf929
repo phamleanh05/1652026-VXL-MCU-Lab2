@@ -1,0 +1,134 @@
+/* USER CODE BEGIN Header */
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include "software_timer.h"
+
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+
+/* USER CODE BEGIN PD */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim2;
+
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_TIM2_Init(void);
+
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+
+/* USER CODE BEGIN 0 */
+void display7SEG(int number);
+
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void) {
+    HAL_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+    MX_TIM2_Init();
+    HAL_TIM_Base_Start_IT(&htim2);
+
+    setTimer(0, 50);
+    setTimer(1, 200);
+    setTimer(2, 200);
+    setTimer(3, 200);
+    setTimer(4, 200);
+
+    while (1) {
+        if (softwareTimers[0].flag) {
+            setTimer(0, 50);
+            HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
+        }
+
+        if (softwareTimers[1].flag) {
+            setTimer(1, 200);
+            HAL_GPIO_WritePin(GPIOA, EN0_Pin, RESET);
+            HAL_GPIO_WritePin(GPIOA, EN1_Pin | EN2_Pin | EN3_Pin, SET);
+            display7SEG(1);
+        }
+
+        if (softwareTimers[2].flag) {
+            setTimer(2, 200);
+            HAL_GPIO_WritePin(GPIOA, EN1_Pin, RESET);
+            HAL_GPIO_WritePin(GPIOA, EN0_Pin | EN2_Pin | EN3_Pin, SET);
+            display7SEG(2);
+        }
+
+        if (softwareTimers[3].flag) {
+            setTimer(3, 200);
+            HAL_GPIO_WritePin(GPIOA, EN2_Pin, RESET);
+            HAL_GPIO_WritePin(GPIOA, EN0_Pin | EN1_Pin | EN3_Pin, SET);
+            display7SEG(3);
+        }
+
+        if (softwareTimers[4].flag) {
+            setTimer(4, 200);
+            HAL_GPIO_WritePin(GPIOA, EN3_Pin, RESET);
+            HAL_GPIO_WritePin(GPIOA, EN0_Pin | EN1_Pin | EN2_Pin, SET);
+            display7SEG(0);
+        }
+    }
+}
+
+void display7SEG(int number) {
+    // Original display7SEG code remains unchanged
+}
+
+/**
+  * @brief System Clock Configuration
+  */
+void SystemClock_Config(void) {
+    // System clock configuration code remains unchanged
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  */
+static void MX_TIM2_Init(void) {
+    // TIM2 initialization code remains unchanged
+}
+
+/**
+  * @brief GPIO Initialization Function
+  */
+static void MX_GPIO_Init(void) {
+    // GPIO initialization code remains unchanged
+}
+
+/**
+  * @brief  Timer interrupt callback
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+    timerRun();
+}

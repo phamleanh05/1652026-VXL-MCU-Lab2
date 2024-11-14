@@ -1,0 +1,25 @@
+/*
+ * software_timer.h
+ *
+ * Created on: Oct 29, 2024
+ * Author: AnhPham
+ */
+
+#ifndef INC_SOFTWARE_TIMER_H_
+#define INC_SOFTWARE_TIMER_H_
+
+#include <stdint.h>
+
+#define MAX_TIMERS 5  // Maximum number of software timers
+
+typedef struct {
+    int counter;
+    int flag;
+} Timer;
+
+extern Timer softwareTimers[MAX_TIMERS];
+
+void setTimer(int timerIndex, int duration);
+void timerRun(void);
+
+#endif /* INC_SOFTWARE_TIMER_H_ */

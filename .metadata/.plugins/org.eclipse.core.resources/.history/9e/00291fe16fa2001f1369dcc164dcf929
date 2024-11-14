@@ -1,0 +1,22 @@
+/*
+ * software_timer.h
+ *
+ *  Created on: Nov 14, 2024
+ *      Author: AnhPham
+ */
+
+#ifndef SOFTWARE_TIMER_H
+#define SOFTWARE_TIMER_H
+
+// Function prototypes
+void setTimer1(int duration);
+void setTimer2(int duration);
+void setTimer3(int duration);
+void timerRun(void);
+
+// External flags
+extern int timer1_flag;
+extern int timer2_flag;
+extern int timer3_flag;
+
+#endif /* SOFTWARE_TIMER_H */

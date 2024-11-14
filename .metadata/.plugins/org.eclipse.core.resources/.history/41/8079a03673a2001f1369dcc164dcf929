@@ -1,0 +1,27 @@
+/*
+ * software_timer.c
+ *
+ * Created on: Oct 29, 2024
+ * Author: AnhPham
+ */
+
+#include "software_timer.h"
+
+Timer softwareTimers[MAX_TIMERS] = {0}; // Array of timers
+
+void setTimer(int timerIndex, int duration) {
+    if (timerIndex < 0 || timerIndex >= MAX_TIMERS) return; // Validate index
+    softwareTimers[timerIndex].counter = duration;
+    softwareTimers[timerIndex].flag = 0;
+}
+
+void timerRun(void) {
+    for (int i = 0; i < MAX_TIMERS; i++) {
+        if (softwareTimers[i].counter > 0) {
+            softwareTimers[i].counter--;
+            if (softwareTimers[i].counter <= 0) {
+                softwareTimers[i].flag = 1;
+            }
+        }
+    }
+}
