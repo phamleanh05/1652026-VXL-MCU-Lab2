@@ -944,3 +944,208 @@ Finished building: Lab2.bin
  
  
  
+16:29:55 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:104:7: warning: unused variable 'led_buffer' [-Wunused-variable]
+  104 |   int led_buffer[4] = {1, 2, 3, 4};
+      |       ^~~~~~~~~~
+../Core/Src/main.c:103:7: warning: unused variable 'index_led' [-Wunused-variable]
+  103 |   int index_led = 0;
+      |       ^~~~~~~~~
+../Core/Src/main.c:102:13: warning: unused variable 'MAX_LED' [-Wunused-variable]
+  102 |   const int MAX_LED = 4;
+      |             ^~~~~~~
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:240:5: warning: implicit declaration of function 'update7SEG' [-Wimplicit-function-declaration]
+  240 |     update7SEG(index_led);                   // Update 7-segment display
+      |     ^~~~~~~~~~
+../Core/Src/main.c:240:16: error: 'index_led' undeclared (first use in this function)
+  240 |     update7SEG(index_led);                   // Update 7-segment display
+      |                ^~~~~~~~~
+../Core/Src/main.c:240:16: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:241:35: error: 'MAX_LED' undeclared (first use in this function)
+  241 |     index_led = (index_led + 1) % MAX_LED;   // Cycle index_led in range 0-3
+      |                                   ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:293:6: warning: conflicting types for 'update7SEG'
+  293 | void update7SEG(int index) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:240:5: note: previous implicit declaration of 'update7SEG' was here
+  240 |     update7SEG(index_led);                   // Update 7-segment display
+      |     ^~~~~~~~~~
+../Core/Src/main.c: In function 'update7SEG':
+../Core/Src/main.c:301:25: error: 'led_buffer' undeclared (first use in this function)
+  301 |             display7SEG(led_buffer[0]);                       // Show number on display 0
+      |                         ^~~~~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:32:08 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'update7SEG':
+../Core/Src/main.c:71:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   71 | {
+      | ^
+../Core/Src/main.c:122:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  122 | {
+      | ^
+../Core/Src/main.c:158:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  158 | {
+      | ^
+../Core/Src/main.c:203:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  203 | {
+      | ^
+../Core/Src/main.c:239:60: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  239 | void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+      |                                                            ^
+../Core/Src/main.c:245:30: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  245 | void display7SEG(int number) {
+      |                              ^
+../Core/Src/main.c:294:32: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  294 | void update7SEG(int index_led) {
+      |                                ^
+../Core/Src/main.c:328:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  328 | {
+      | ^
+../Core/Src/main.c:62:6: error: old-style parameter declarations in prototyped function definition
+   62 | void update7SEG (int index_led)
+      |      ^~~~~~~~~~
+../Core/Src/main.c:356: error: expected '{' at end of input
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:51:13: warning: 'MX_GPIO_Init' declared 'static' but never defined [-Wunused-function]
+   51 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:52:13: warning: 'MX_TIM2_Init' declared 'static' but never defined [-Wunused-function]
+   52 | static void MX_TIM2_Init(void);
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:33:31 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'update7SEG':
+../Core/Src/main.c:299:13: error: 'index' undeclared (first use in this function)
+  299 |     switch (index) {
+      |             ^~~~~
+../Core/Src/main.c:299:13: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:33:48 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab2.elf" @"objects.list"   -mcpu=cortex-m3 -T"G:\Study\ViXuLy\1652026-VXL-MCU-Lab2\Lab2\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab2.elf
+ 
+arm-none-eabi-size   Lab2.elf 
+arm-none-eabi-objdump -h -S  Lab2.elf  > "Lab2.list"
+   text	   data	    bss	    dec	    hex	filename
+   7784	     36	   1684	   9504	   2520	Lab2.elf
+arm-none-eabi-objcopy  -O ihex  Lab2.elf  "Lab2.hex"
+Finished building: default.size.stdout
+Finished building: Lab2.list
+ 
+Finished building: Lab2.hex
+ 
+arm-none-eabi-objcopy  -O binary  Lab2.elf  "Lab2.bin"
+ 
+Finished building: Lab2.bin
+ 
+16:40:25 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:117:26: error: expected ';' before '}' token
+  117 |     update7SEG(index_led)
+      |                          ^
+      |                          ;
+  118 |    }
+      |    ~                      
+../Core/Src/main.c:123:26: error: expected ';' before '}' token
+  123 |     update7SEG(index_led)
+      |                          ^
+      |                          ;
+  124 |    }
+      |    ~                      
+../Core/Src/main.c:129:26: error: expected ';' before '}' token
+  129 |     update7SEG(index_led)
+      |                          ^
+      |                          ;
+  130 |    }
+      |    ~                      
+../Core/Src/main.c:135:26: error: expected ';' before '}' token
+  135 |     update7SEG(index_led)
+      |                          ^
+      |                          ;
+  136 |    }
+      |    ~                      
+make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+16:40:42 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab2.elf" @"objects.list"   -mcpu=cortex-m3 -T"G:\Study\ViXuLy\1652026-VXL-MCU-Lab2\Lab2\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab2.elf
+ 
+arm-none-eabi-size   Lab2.elf 
+arm-none-eabi-objdump -h -S  Lab2.elf  > "Lab2.list"
+   text	   data	    bss	    dec	    hex	filename
+   8004	     36	   1684	   9724	   25fc	Lab2.elf
+arm-none-eabi-objcopy  -O ihex  Lab2.elf  "Lab2.hex"
+Finished building: default.size.stdout
+Finished building: Lab2.list
+ 
+Finished building: Lab2.hex
+ 
+arm-none-eabi-objcopy  -O binary  Lab2.elf  "Lab2.bin"
+ 
+Finished building: Lab2.bin
+ 
+06:01:11 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-size   Lab2.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8004	     36	   1684	   9724	   25fc	Lab2.elf
+Finished building: default.size.stdout
+ 
+06:02:16 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab2.elf" @"objects.list"   -mcpu=cortex-m3 -T"G:\Study\ViXuLy\1652026-VXL-MCU-Lab2\Lab2\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab2.elf
+ 
+arm-none-eabi-size   Lab2.elf 
+arm-none-eabi-objdump -h -S  Lab2.elf  > "Lab2.list"
+   text	   data	    bss	    dec	    hex	filename
+   7968	     36	   1684	   9688	   25d8	Lab2.elf
+arm-none-eabi-objcopy  -O ihex  Lab2.elf  "Lab2.hex"
+Finished building: default.size.stdout
+arm-none-eabi-objcopy  -O binary  Lab2.elf  "Lab2.bin"
+ 
+Finished building: Lab2.bin
+Finished building: Lab2.hex
+ 
+ 
+Finished building: Lab2.list
+ 
+06:05:47 **** Incremental Build of configuration Debug for project Lab2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab2.elf" @"objects.list"   -mcpu=cortex-m3 -T"G:\Study\ViXuLy\1652026-VXL-MCU-Lab2\Lab2\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab2.elf
+ 
+arm-none-eabi-size   Lab2.elf 
+arm-none-eabi-objdump -h -S  Lab2.elf  > "Lab2.list"
+   text	   data	    bss	    dec	    hex	filename
+   7968	     36	   1684	   9688	   25d8	Lab2.elf
+arm-none-eabi-objcopy  -O ihex  Lab2.elf  "Lab2.hex"
+Finished building: default.size.stdout
+arm-none-eabi-objcopy  -O binary  Lab2.elf  "Lab2.bin"
+ 
+Finished building: Lab2.list
+Finished building: Lab2.hex
+Finished building: Lab2.bin
+ 
+ 
+ 

@@ -266,6 +266,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timerRun();
+    update7SEG(index_led);                   // Update 7-segment display
+    index_led = (index_led + 1) % MAX_LED;   // Cycle index_led in range 0-3
 }
 
 void display7SEG(int number) {

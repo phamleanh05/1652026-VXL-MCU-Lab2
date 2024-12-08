@@ -85,3 +85,18 @@ C Model Exception: C Model Status [Element software_timer.c does not exist.]
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
 !SUBENTRY 1 org.eclipse.cdt.core 4 969 2024-11-14 16:58:11.563
 !MESSAGE Element software_timer.c does not exist.
+!SESSION 2024-11-14 17:54:53.651 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-11-14 17:55:08.633
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-11-14 17:55:08.696
+!MESSAGE Log4j initialized with config file G:\Study\ViXuLy\1652026-VXL-MCU-Lab2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-11-14 17:55:15.105
+!MESSAGE Started RMI Server, listening on port 41337
