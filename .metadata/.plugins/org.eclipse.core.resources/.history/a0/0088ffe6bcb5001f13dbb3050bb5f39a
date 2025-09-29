@@ -1,0 +1,44 @@
+/*
+ * software_timer.c
+ *
+ *  Created on: Oct 29, 2024
+ *      Author: AnhPham
+ */
+
+#include "software_timer.h"
+
+#define MAX_TIMERS 5
+
+typedef struct {
+    int counter;
+    int flag;
+} Timer;
+
+static Timer timers[MAX_TIMERS];
+
+void setTimer(int index, int duration) {
+    if (index >= 0 && index < MAX_TIMERS) {
+        timers[index].counter = duration;
+        timers[index].flag = 0;
+    }
+}
+
+int isTimerFlagSet(int index) {
+    if (index >= 0 && index < MAX_TIMERS) {
+        return timers[index].flag;
+    }
+    return 0;
+}
+
+void timerRun() {
+    for (int i = 0; i < MAX_TIMERS; i++) {
+        if (timers[i].counter > 0) {
+            timers[i].counter--;
+            if (timers[i].counter <= 0) {
+                timers[i].flag = 1;
+            }
+        }
+    }
+}
+
+
